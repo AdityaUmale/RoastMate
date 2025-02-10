@@ -43,11 +43,20 @@ export default function Home() {
           <div className="w-full md:w-1/2 md:mt-10 mt-4">
             <InputForm onSubmit={handleSubmit} />
           </div>
-          {roast && <div className="w-full md:w-1/2 mt-8 md:mt-0">
-            <RoastCard roast={roast} />
-            
-          </div>}
-          
+          <div className="w-full md:w-1/2 mt-8 md:mt-0">
+            {roast ? (
+              <RoastCard roast={roast} />
+            ) : (
+              <div className="p-8 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm text-center mt-12 ml-4">
+                <p className="text-gray-400 text-lg">
+                  Fill in the details about your friend and click &quot;Generate Roast&quot; to create a personalized roast card! 🎭
+                </p>
+                <div className="mt-4 text-pink-400/60 text-sm">
+                  Your roast card will appear here ✨
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </main>
     </div>
