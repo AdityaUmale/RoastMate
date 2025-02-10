@@ -45,7 +45,9 @@ export default function Home() {
           </div>
           {roast && <div className="w-full md:w-1/2 mt-8 md:mt-0">
             <RoastCard roast={roast} />
+            
           </div>}
+          
         </div>
       </main>
     </div>
