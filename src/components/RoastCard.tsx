@@ -36,11 +36,13 @@ export function RoastCard({ roast }: RoastCardProps) {
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/card-pattern.svg')] opacity-5"></div>
         <div className="absolute top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 bottom-2 sm:bottom-4 border-2 border-pink-300/50 rounded-lg"></div>
         <div className="relative z-10 flex flex-col justify-center h-full">
-          <p className="text-gray-800 text-base sm:text-xl font-medium text-center italic leading-relaxed px-2 sm:px-4 font-serif tracking-wide overflow-auto max-h-full">
+          <p className="text-gray-800 text-base sm:text-xl font-medium text-center italic leading-relaxed px-2 sm:px-2 font-serif tracking-wide overflow-auto max-h-[85%] mb-8">
             {roast}
           </p>
         </div>
-        <div className="absolute bottom-3 sm:bottom-6 right-3 sm:right-6 text-xs sm:text-sm text-pink-400 font-serif">RoastMate</div>
+        <div className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 text-xs sm:text-sm text-pink-400 font-serif">
+          RoastMate
+        </div>
       </div>
       <Button
         onClick={handleDownload}

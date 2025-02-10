@@ -40,15 +40,17 @@ export const AnimatedTestimonials = ({
     }
   }, [autoplay, testimonials, handleNext]) // Added handleNext to dependencies
 
-  const randomRotateY = () => {
-    return Math.floor(Math.random() * 21) - 10
-  }
+  // Replace the random rotation function with fixed values
+  const getRotateY = (index: number) => {
+    const rotations = [5, -5, 8, -8, 3]; // Fixed rotation values
+    return rotations[index % rotations.length];
+  };
 
   return (
     <div className="max-w-sm md:max-w-full mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-10">
       <div className="relative grid grid-cols-1 gap-10">
         <div>
-          <div className="relative h-60 w-full">
+          <div className="relative h-[400px] w-full">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
@@ -57,13 +59,13 @@ export const AnimatedTestimonials = ({
                     opacity: 0,
                     scale: 0.9,
                     z: -100,
-                    rotate: randomRotateY(),
+                    rotate: getRotateY(index), // Use fixed rotation
                   }}
                   animate={{
                     opacity: isActive(index) ? 1 : 0.7,
                     scale: isActive(index) ? 1 : 0.95,
                     z: isActive(index) ? 0 : -100,
-                    rotate: isActive(index) ? 0 : randomRotateY(),
+                    rotate: isActive(index) ? 0 : getRotateY(index), // Use fixed rotation
                     zIndex: isActive(index) ? 999 : testimonials.length + 2 - index,
                     y: isActive(index) ? [0, -60, 0] : 0,
                   }}
@@ -71,7 +73,7 @@ export const AnimatedTestimonials = ({
                     opacity: 0,
                     scale: 0.9,
                     z: 100,
-                    rotate: randomRotateY(),
+                    rotate: getRotateY(index), // Use fixed rotation
                   }}
                   transition={{
                     duration: 0.4,
@@ -82,10 +84,10 @@ export const AnimatedTestimonials = ({
                   <Image
                     src={testimonial.src || "/placeholder.svg"}
                     alt={testimonial.name}
-                    width={300}
-                    height={300}
+                    width={400}
+                    height={400}
                     draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
+                    className="h-full w-full rounded-3xl object-contain" // Changed object-cover to object-contain
                   />
                 </motion.div>
               ))}

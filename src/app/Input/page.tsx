@@ -8,6 +8,7 @@ import { Spotlight } from "@/components/ui/spotlight-new"
 
 export default function Home() {
   const [roast, setRoast] = useState("")
+  const [isGenerating, setIsGenerating] = useState(false)
 
   const handleSubmit = async (crushInfo: {
     hobbies: string
@@ -16,6 +17,7 @@ export default function Home() {
     relationship: string
   }) => {
     try {
+      setIsGenerating(true)
       const response = await fetch("/api/generateRoast", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -31,6 +33,8 @@ export default function Home() {
     } catch (error) {
       console.error(error)
       alert("Error generating roast. Please try again.")
+    } finally {
+      setIsGenerating(false)
     }
   }
 
@@ -41,7 +45,7 @@ export default function Home() {
       <main className="flex-grow flex items-center justify-center p-4 sm:p-6 md:p-8 pt-24 sm:pt-28">
         <div className="w-full max-w-4xl mx-auto relative z-10 md:flex md:gap-12 p-4">
           <div className="w-full md:w-1/2 md:mt-10 mt-4">
-            <InputForm onSubmit={handleSubmit} />
+            <InputForm onSubmit={handleSubmit} isGenerating={isGenerating} />
           </div>
           <div className="w-full md:w-1/2 mt-8 md:mt-0">
             {roast ? (
