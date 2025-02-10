@@ -1,46 +1,54 @@
-// src/app/page.tsx
-'use client'; // Mark this as a Client Component
+"use client"
 
-import { useState } from 'react';
-import InputForm from '../../components/InputForm';
-import RoastCard from '../../components/RoastCard';
+import { useState } from "react"
+import { Navbar } from "@/components/navbar"
+import { InputForm } from "@/components/InputForm"
+import { RoastCard } from "@/components/RoastCard"
+import { Spotlight } from "@/components/ui/spotlight-new"
 
 export default function Home() {
-  const [roast, setRoast] = useState('');
+  const [roast, setRoast] = useState("")
 
   const handleSubmit = async (crushInfo: {
-    hobbies: string;
-    quirks: string;
-    favorites: string;
-    relationship: string;
+    hobbies: string
+    quirks: string
+    favorites: string
+    relationship: string
   }) => {
     try {
-      // Call the API route
-      const response = await fetch('/api/generateRoast', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/generateRoast", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(crushInfo),
-      });
+      })
 
-      // Handle errors
       if (!response.ok) {
-        throw new Error('Failed to generate roast');
+        throw new Error("Failed to generate roast")
       }
 
-      // Parse the response
-      const data = await response.json();
-      setRoast(data.roast);
+      const data = await response.json()
+      setRoast(data.roast)
     } catch (error) {
-      console.error(error);
-      alert('Error generating roast. Please try again.');
+      console.error(error)
+      alert("Error generating roast. Please try again.")
     }
-  };
+  }
 
   return (
-    <div>
-      <h1>Valentine Roast Generator</h1>
-      <InputForm onSubmit={handleSubmit} />
-      {roast && <RoastCard roast={roast} />}
+    <div className="min-h-screen w-full flex flex-col bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
+      <Navbar />
+      <Spotlight />
+      <main className="flex-grow flex items-center justify-center p-4 sm:p-6 md:p-8 pt-24 sm:pt-28">
+        <div className="w-full max-w-4xl mx-auto relative z-10 md:flex md:gap-12 p-4">
+          <div className="w-full md:w-1/2 md:mt-10 mt-4">
+            <InputForm onSubmit={handleSubmit} />
+          </div>
+          {roast && <div className="w-full md:w-1/2 mt-8 md:mt-0">
+            <RoastCard roast={roast} />
+          </div>}
+        </div>
+      </main>
     </div>
-  );
+  )
 }
+
