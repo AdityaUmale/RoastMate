@@ -32,7 +32,7 @@ export async function POST(req: Request) {
        * Use casual abbreviations like "AF", "TBH" but not too much
        * Keep sentences uneven - some short, some longer
        * Add funny rhetorical questions
-       * Maximum 70 words, sound like spoken conversation
+       * Maximum 60 words, sound like spoken conversation
 
     Example good output:
     "Chai-pani Kumar! ☕️ Your tea obsession makes Starbucks insecure yaar! 
