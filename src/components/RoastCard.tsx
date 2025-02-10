@@ -30,17 +30,17 @@ export function RoastCard({ roast }: RoastCardProps) {
     <div className="mt-8 space-y-4">
       <div
         ref={cardRef}
-        className="p-8 bg-gradient-to-br from-pink-100 via-rose-50 to-white rounded-xl shadow-2xl border border-pink-300 relative overflow-hidden max-w-sm mx-auto"
+        className="p-4 sm:p-8 bg-gradient-to-br from-pink-100 via-rose-50 to-white rounded-xl shadow-2xl border border-pink-300 relative overflow-hidden max-w-sm mx-auto"
         style={{ aspectRatio: "3 / 4" }}
       >
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/card-pattern.svg')] opacity-5"></div>
-        <div className="absolute top-4 left-4 right-4 bottom-4 border-2 border-pink-300/50 rounded-lg"></div>
+        <div className="absolute top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 bottom-2 sm:bottom-4 border-2 border-pink-300/50 rounded-lg"></div>
         <div className="relative z-10 flex flex-col justify-center h-full">
-          <p className="text-gray-800 text-xl font-medium text-center italic leading-relaxed px-4 font-serif tracking-wide first-letter:text-3xl first-letter:font-bold first-letter:text-pink-500 first-letter:mr-1 first-letter:float-left">
+          <p className="text-gray-800 text-base sm:text-xl font-medium text-center italic leading-relaxed px-2 sm:px-4 font-serif tracking-wide first-letter:text-2xl sm:first-letter:text-3xl first-letter:font-bold first-letter:text-pink-500 first-letter:mr-1 first-letter:float-left overflow-auto max-h-full">
             {roast}
           </p>
         </div>
-        <div className="absolute bottom-6 right-6 text-sm text-pink-400 font-serif">RoastMate</div>
+        <div className="absolute bottom-3 sm:bottom-6 right-3 sm:right-6 text-xs sm:text-sm text-pink-400 font-serif">RoastMate</div>
       </div>
       <Button
         onClick={handleDownload}
