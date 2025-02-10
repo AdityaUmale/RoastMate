@@ -9,10 +9,10 @@ const openai = new OpenAI({
 export async function POST(req: Request) {
   try {
     // Parse the request body
-    const { name, hobbies, quirks, favorites, relationship } = await req.json();
+    const { hobbies, quirks, favorites, relationship } = await req.json();
 
     // Validate the input
-    if (!name || !hobbies || !quirks || !favorites || !relationship) {
+    if (!hobbies || !quirks || !favorites || !relationship) {
       return NextResponse.json(
         { message: 'All fields are required' },
         { status: 400 }
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     }
 
     // Create the prompt for OpenAI
-    const prompt = `Write a funny and loving roast in hindi for ${name}. They love ${hobbies}, have quirks like ${quirks}, enjoy ${favorites}, and our relationship is ${relationship}. Make it humorous, witty, and heartfelt and it should express love, but keep it under 80 words. Use playful teasing and clever wordplay, and avoid anything mean-spirited but dont keep it too formal.`;
+    const prompt = `Write a funny and loving roast in hindi+english mix(hinglish). They love ${hobbies}, have quirks like ${quirks}, enjoy ${favorites}, and our relationship is ${relationship}. Make it humorous, witty, and heartfelt and it should express love, but keep it under 80 words. Use playful teasing and clever wordplay, and avoid anything mean-spirited but dont keep it too formal, keep it very casual and teasing, also it shouldnt look like written by ai, make it human written.`;
 
     // Call the OpenAI API
     const completion = await openai.chat.completions.create({

@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 interface InputFormProps {
   onSubmit: (crushInfo: {
-    name: string;
     hobbies: string;
     quirks: string;
     favorites: string;
@@ -13,32 +12,24 @@ interface InputFormProps {
 
 export default function InputForm({ onSubmit }: InputFormProps) {
   const [crushInfo, setCrushInfo] = useState({
-    name: '',
     hobbies: '',
     quirks: '',
     favorites: '',
     relationship: '',
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setCrushInfo({ ...crushInfo, [name]: value });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit(crushInfo);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Crush's Name"
-        value={crushInfo.name}
-        onChange={handleChange}
-      />
       <textarea
         name="hobbies"
         placeholder="Hobbies"
