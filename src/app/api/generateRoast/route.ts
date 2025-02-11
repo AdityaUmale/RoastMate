@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     const prompt = `Act as a funny best friend creating a playful roast. Follow these rules:
     1. Use Hinglish mix (Hindi in Roman script + English) naturally like friends chat
     2. Follow this structure:
-       - Start with funny nickname based on their traits
+       - Start with funny nickname based on their traits, nickname should be funny and relatable
        - Roast hobbies: "${hobbies}" using exaggeration humor
        - Tease about quirks: "${quirks}" using relatable jokes
        - Mock favorites: "${favorites}" with pop culture comparisons
