@@ -10,6 +10,7 @@ interface InputFormProps {
     quirks: string
     favorites: string
     relationship: string
+    roastType: 'loving' | 'funny' | 'savage'
   }) => void
   isGenerating: boolean
 }
@@ -20,6 +21,7 @@ export function InputForm({ onSubmit, isGenerating }: InputFormProps) {
     quirks: "",
     favorites: "",
     relationship: "",
+    roastType: "funny" as 'loving' | 'funny' | 'savage'
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -35,6 +37,41 @@ export function InputForm({ onSubmit, isGenerating }: InputFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-4">
+        <div className="grid grid-cols-3 gap-2">
+          <button
+            type="button"
+            onClick={() => setCrushInfo({ ...crushInfo, roastType: 'loving' })}
+            className={`p-2 rounded-lg text-sm font-medium transition-all ${
+              crushInfo.roastType === 'loving'
+                ? 'bg-pink-500 text-white'
+                : 'bg-white/5 text-white/70 hover:bg-white/10'
+            }`}
+          >
+            Loving ❤️
+          </button>
+          <button
+            type="button"
+            onClick={() => setCrushInfo({ ...crushInfo, roastType: 'funny' })}
+            className={`p-2 rounded-lg text-sm font-medium transition-all ${
+              crushInfo.roastType === 'funny'
+                ? 'bg-purple-500 text-white'
+                : 'bg-white/5 text-white/70 hover:bg-white/10'
+            }`}
+          >
+            Funny 😄
+          </button>
+          <button
+            type="button"
+            onClick={() => setCrushInfo({ ...crushInfo, roastType: 'savage' })}
+            className={`p-2 rounded-lg text-sm font-medium transition-all ${
+              crushInfo.roastType === 'savage'
+                ? 'bg-red-500 text-white'
+                : 'bg-white/5 text-white/70 hover:bg-white/10'
+            }`}
+          >
+            Savage 🔥
+          </button>
+        </div>
         <Textarea
           name="hobbies"
           placeholder="Hobbies"
