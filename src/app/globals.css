@@ -70,3 +70,72 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  text-shadow: 1px 0 blue;
+  top: 0;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 red;
+  animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 green;
+  animation: glitch-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-1 {
+  0% {
+    clip: rect(20px, 900px, 56px, 0);
+  }
+  20% {
+    clip: rect(10px, 900px, 70px, 0);
+  }
+  40% {
+    clip: rect(0px, 900px, 89px, 0);
+  }
+  60% {
+    clip: rect(70px, 900px, 12px, 0);
+  }
+  80% {
+    clip: rect(89px, 900px, 34px, 0);
+  }
+  100% {
+    clip: rect(45px, 900px, 56px, 0);
+  }
+}
+
+@keyframes glitch-2 {
+  0% {
+    clip: rect(12px, 900px, 78px, 0);
+  }
+  20% {
+    clip: rect(34px, 900px, 12px, 0);
+  }
+  40% {
+    clip: rect(67px, 900px, 23px, 0);
+  }
+  60% {
+    clip: rect(23px, 900px, 45px, 0);
+  }
+  80% {
+    clip: rect(89px, 900px, 12px, 0);
+  }
+  100% {
+    clip: rect(56px, 900px, 78px, 0);
+  }
+}

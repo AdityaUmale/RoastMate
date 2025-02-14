@@ -43,26 +43,35 @@ export function RoastCard({ roast }: RoastCardProps) {
     <div className="mt-8 space-y-4">
       <div
         ref={cardRef}
-        className="p-4 sm:p-8 bg-gradient-to-br from-pink-100 via-rose-50 to-white rounded-xl shadow-2xl border border-pink-300 relative overflow-hidden max-w-sm mx-auto"
+        className="p-6 sm:p-10 bg-gradient-to-br from-fuchsia-500 via-purple-500 to-indigo-500 rounded-3xl shadow-2xl relative overflow-hidden max-w-sm mx-auto transform transition-all duration-300 hover:scale-105 hover:shadow-3xl"
         style={{ aspectRatio: "3 / 4" }}
       >
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('/card-pattern.svg')] opacity-5"></div>
-        <div className="absolute top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 bottom-2 sm:bottom-4 border-2 border-pink-300/50 rounded-lg"></div>
+        {/* Replace noise.png with CSS gradient pattern */}
+        <div 
+          className="absolute top-0 left-0 w-full h-full opacity-10"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+            backgroundSize: '24px 24px'
+          }}
+        ></div>
+        <div className="absolute inset-2 border-2 border-white/30 rounded-2xl"></div>
         <div className="relative z-10 flex flex-col justify-center h-full">
           <p
             ref={textRef}
-            className="text-gray-800 font-medium text-center italic leading-relaxed px-2 sm:px-4 font-serif tracking-wide"
+            className="text-white font-bold text-center leading-relaxed px-3 sm:px-5 font-mono"
             style={{
               fontSize: `${fontSize}px`,
               maxHeight: '75%',
               overflow: 'hidden',
-              margin: 'auto'
+              margin: 'auto',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+              WebkitTextStroke: '1px rgba(255,255,255,0.1)',
             }}
           >
             {roast}
           </p>
         </div>
-        <div className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 text-xs sm:text-sm text-pink-400 font-serif">
+        <div className="absolute bottom-4 left-6 text-sm sm:text-base font-bold text-black">
           RoastMate
         </div>
       </div>
